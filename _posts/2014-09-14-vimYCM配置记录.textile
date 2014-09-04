@@ -1,0 +1,34 @@
+---
+layout: post
+title: 针对C开发VIM插件YCM配置记录
+---
+
+h1. {{ page.title }}
+
+p(meta). 2014/9/4 - 合肥 
+
+以下主要针对Linux环境下C开发
+1、vim版本要求7.3.584以上，且需编译支持python2.6以上，可通过vim --version查看是否满足要求
+2、配置vundle
+3、.vimrc中添加"Valloric/YouCompleteMe", 运行BundleInstall，下载相关git资源
+4、cd ~/.vim//home/retton/.vim/bundle/YouCompleteMe/ 并运行./install.sh --clang-completer 
+    出现缺少依赖包时安装相应依赖包
+5、该vim插件比较大，安装后接近200M，网速不理想的，3、4两步耐心等待
+6、安装完成后，将~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py拷贝到合适路径
+7、修改.ycm_extra_conf.py中flags字段相关配置
+flags = [
+    '-Wall',
+    '-std=gnu99',
+    '-stdlib=libc++',
+    '-x',
+    'c',
+    '-I',
+    '.',
+    '-isystem',
+    '/usr/include/',
+    '-isystem',
+    '/usr/local/include',
+    ]
+8、相关头文件查找路径可在改字段就里添加
+9、.vimrc中加入let g:ycm_global_ycm_extra_conf="PATH/.ycm_extra_conf.py"
+10、即可正常使用
