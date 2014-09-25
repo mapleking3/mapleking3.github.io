@@ -1,0 +1,17 @@
+---
+layout: post
+title: tcpdump命令使用记录
+---
+
+h1. {{ page.title }}
+
+p(meta). 2014/9/25 - 合肥 
+
+在Linux控制调试网络程序时，使用tcpdump命令是个很好的选择，之前没有详细查看
+tcpdump的manpage，只是简单的查看网络流信息，查看详细包信息都是使用-w选项输
+到文本文件中，用wireshark查看。
+空闲时，查看manpage，发现tcpdump几个比较有用的输出选项:
+    -x  查看包的hex信息，不包括链路层
+    -xx 查看包的hex信息，包括链路层信息
+    -X  查看包的hex和ascii信息，不包括链路层
+    -XX 查看包的hex和ascii信息，包括链路层
